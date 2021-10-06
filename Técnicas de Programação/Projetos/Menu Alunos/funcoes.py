@@ -1,9 +1,9 @@
 # Modulo para as funções
 
-def criar_cabecalho(titulo:str,hasEqual = False,tamanhoLinha = 55):
-    if hasEqual == True:
+def criar_cabecalho(titulo:str,temSinal = False,tamanhoLinha = 55):
+    if temSinal == True:
         print("-=-"*18)
-        print(titulo.center(tamanhoLinha))
+        print(titulo.center(60))
         print("-=-"*18)
     else:
         print("-"*tamanhoLinha)
@@ -16,7 +16,7 @@ def criar_menu(lista,titulo:str,tamanhoLinha = 55):
     print(titulo.center(tamanhoLinha))
     print("-"*tamanhoLinha)
     for i,c in enumerate(lista):
-        print("[{}] {}".format(i+1,c))
+        print("\033[1;33m[{}]\033[m {}".format(i+1,c))
     print("-"*tamanhoLinha)
 
 
@@ -24,6 +24,7 @@ def cadastrar_usuario(lista,nome:str,email:str):
     dadosAlunos = {"nome":nome,"email":email}
     lista.append(dadosAlunos.copy())
     dadosAlunos.clear()
+    print("\033[1;32mUsuário {} cadastrado(a) com sucesso!\033[m".format(nome))
 
 
 def exibir_usuarios_cadastrados(lista):
@@ -61,14 +62,18 @@ def verificar_usuario_email(lista,email:str):
 def remover_aluno(lista,email:str):
     for i,c in enumerate(lista):
         if c["email"] == email:
-            lista.pop(i)
-            print("Aluno {} removido da lista com sucesso!".format(c["nome"]))
+            confirmacao = str(input("\033[1;33mTem certeza de que deseja excluir o usuário {} da lista? [S/N] : \033[m".format(c["nome"]))).upper().strip()
+            if confirmacao == "S" or confirmacao == "SIM" or confirmacao == "SI":
+                lista.pop(i)
+                print("\033[1;32mUsuário {} removido(a) da lista com sucesso!\033[m".format(c["nome"]))
+            else:
+                print("\033[1;32mPedido de exclusão cancelado com sucesso!\033[m")
 
 
 def alterar_nome_usuario(lista,email:str,novoNome:str):
     cont = 0
     for i,c in enumerate(lista):
         if c["email"] == email:
-            print("Alteração de {} para {} foi um sucesso!".format(c["nome"],novoNome))
+            print("\033[1;32mAlteração de {} para {} foi um sucesso!\033[m".format(c["nome"],novoNome))
             c["nome"] = novoNome
             break
