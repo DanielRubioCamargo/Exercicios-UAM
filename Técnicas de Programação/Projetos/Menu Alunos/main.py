@@ -5,7 +5,7 @@ from time import sleep
 
 def main():
     listaAlunos = list()
-    listaOpcoes = ["Cadastrar novo usuário.","Exibir usuários cadastrados.","Exibir usuários cadastrados por ordem alfabética.","Verificar se existe um usuário na lista.","Remover um usuário da lista.","Alterar nome de um usuário."]
+    listaOpcoes = ["Cadastrar novo usuário.","Exibir usuários cadastrados.","Exibir usuários cadastrados por ordem alfabética.","Verificar se existe um usuário na lista.","Remover um usuário da lista.","Alterar nome de um usuário.","Sair do sistema."]
     criar_cabecalho("\033[1;34mSeja bem vindo(a)!\033[m",True)
     while True:
         criar_menu(listaOpcoes,"Opções")
@@ -51,6 +51,9 @@ def main():
                 else:
                     print("\033[1;31mNão foi possível executar a alteração, endereço de email não existe na lista!\033[m")
                 sleep(1.5)
+            elif opcao == 7:
+                print("Saindo do sistema...")
+                break 
             else:
                 print("\033[1;31mOpção inválida!\033[m")
 
