@@ -1,2 +1,2 @@
 # Exercicios-UAM
-Exercícios da faculdade!
+Exercícios da faculdade.
