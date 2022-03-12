@@ -10,6 +10,7 @@ public class TreinoChar2 {
         String word = scanner.nextLine();
         char firstLetter = word.charAt(0);
         System.out.println("A primeira letra da palavra escrita é : " + firstLetter);
+        System.exit(0);
 
     }
 
